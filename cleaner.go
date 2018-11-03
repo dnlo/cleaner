@@ -1,14 +1,15 @@
-// Package for composing functions to clean strings
+// Package cleaner is for composing functions to clean strings
 package cleaner
 
 import (
-	"strings"
 	"regexp"
+	"strings"
 )
 
+// StringFunction takes a string and returns a string
 type StringFunction func(string) string
 
-// It takes a set of StringFunctions that a string will be passed through
+// Clean takes a set of StringFunctions that a string will be passed through
 func Clean(fns ...StringFunction) StringFunction {
 	return func(s string) string {
 		for _, v := range fns {
@@ -20,7 +21,7 @@ func Clean(fns ...StringFunction) StringFunction {
 	}
 }
 
-// It takes a set of strings to be deleted
+// Delete takes a set of strings to be deleted
 func Delete(s ...string) StringFunction {
 	return func(r string) string {
 		for _, v := range s {
@@ -30,14 +31,14 @@ func Delete(s ...string) StringFunction {
 	}
 }
 
-// It takes a part of the string to be replaced and what to replace it with
+// Replace takes a part of the string to be replaced and what to replace it with
 func Replace(old, new string) StringFunction {
 	return func(s string) string {
 		return strings.Replace(s, old, new, -1)
 	}
 }
 
-// Extract a regexp from a string (first match)
+// Extract takes a regexp pattern and returns the first match
 func Extract(pat string) StringFunction {
 	r := regexp.MustCompile(pat)
 	return func(s string) string {
@@ -55,10 +56,10 @@ func FirstBefore(d string) StringFunction {
 // LastAfter returns a part of the string after d
 func LastAfter(d string) StringFunction {
 	return func(s string) string {
-		sl :=  strings.Split(s, d)
+		sl := strings.Split(s, d)
 		if len(sl) < 1 {
 			return ""
 		}
-		return sl[len(sl) -1]
+		return sl[len(sl)-1]
 	}
 }
