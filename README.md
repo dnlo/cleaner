@@ -1,5 +1,9 @@
 Package for cleaning strings
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/dnlo/cleaner)](https://goreportcard.com/report/github.com/dnlo/cleaner)
+
+Docs: https://godoc.org/github.com/dnlo/cleaner
+
 Example:
 
 ```
