@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/dnlo/strings/cleaner"
+	"github.com/dnlo/cleaner"
 )
 
 type seller struct {
