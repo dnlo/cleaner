@@ -46,14 +46,14 @@ func Extract(pat string) StringFunction {
 	}
 }
 
-// FirstBefore returns a part of the string before d
-func FirstBefore(d string) StringFunction {
+// BeforeFirst returns part of the string before the first occurence of d
+func BeforeFirst(d string) StringFunction {
 	return func(s string) string {
 		return (strings.Split(s, d))[0]
 	}
 }
 
-// LastAfter returns a part of the string after d
+// LastAfter returns part of the string after the last occurence of d
 func LastAfter(d string) StringFunction {
 	return func(s string) string {
 		sl := strings.Split(s, d)
