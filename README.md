@@ -30,14 +30,14 @@ type seller struct {
 
 func extract(s string) seller {
 	getName := cleaner.Clean(
-		cleaner.LastAfter("Seller: "),
-		cleaner.FirstBefore(`(`))
+		cleaner.AfterLast("Seller: "),
+		cleaner.BeforeFirst(`(`))
 	getSales := cleaner.Clean(
-		cleaner.LastAfter("("),
-		cleaner.FirstBefore(")"),
+		cleaner.AfterLast("("),
+		cleaner.BeforeFirst(")"),
 		cleaner.Delete(","))
 	getFeedback := cleaner.Clean(
-		cleaner.LastAfter(") "),
+		cleaner.AfterLast(") "),
 		cleaner.Delete("%"),
 		cleaner.Extract(`[0-9\.]*`))
 
